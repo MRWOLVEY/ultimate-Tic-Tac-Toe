@@ -12,6 +12,7 @@ const ACTIONS={
     resetStateAndTurn:'resetStateAndTurn',
     resetTurn:'resetTurn',
     changeTurn:'changeTurn',
+    changeCell:'changeCell',
 }
 
 const App = () => {

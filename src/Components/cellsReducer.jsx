@@ -1,5 +1,6 @@
 import { resetState } from "./cellsContext"
-
+import xIcon from "../Assets/X.png"
+import oIcon from "../Assets/O.png"
 
 export default function reducer (state,action){
 
@@ -18,6 +19,29 @@ export default function reducer (state,action){
             return{
                 ...state,
                 turn: state.turn==='x'? 'o':'x'
+            }
+        case 'changeCell':
+            return{
+                ...state,
+                games: state.games.map((game)=>{
+                    if(game.id===action.payload.game_id){
+                        return{
+                            ...game,
+                            cells:game.cells.map((cell)=>{
+                                if(cell.id===action.payload.id_){
+                                    return{
+                                        ...cell,
+                                        active:false,
+                                        url:action.payload.value==='x'?xIcon:oIcon,
+                                        value:action.payload.value,
+                                    }
+                                }
+                                return cell
+                            })
+                        }
+                    }
+                    return game
+                })
             }
         default: return state
     }
