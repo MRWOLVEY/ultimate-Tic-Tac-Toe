@@ -12,17 +12,13 @@ function Cell({url,handler,activeprop,id_,game_id}) {
   },[])
 
   useEffect(() => {
-    console.log(state.games[0].cells[0].value)
-  },)
+    
+  },[])
 
   const {state,dispatch,ACTIONS} = useContext(cellsContext)
 
   const lol = (e) =>{
-    // handler(e,  state.games[0])
-    // console.log(state.games[game_id].cells[id_]) //accessing reducer state for single cell
-    // dispatch({type:ACTIONS.changeTurn})
-    // console.log(state)
-    dispatch({type:ACTIONS.changeCell,payload:{id_:id_,game_id:game_id,value:'o'}})
+    //
   }
 
 
