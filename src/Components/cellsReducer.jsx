@@ -32,7 +32,7 @@ export default function reducer (state,action){
                                     return{
                                         ...cell,
                                         active:false,
-                                        // url:action.payload.value==='x'?xIcon:oIcon,
+                                        url:action.payload.value=='X'? xIcon:oIcon,
                                         value:action.payload.value,
                                     }
                                 }

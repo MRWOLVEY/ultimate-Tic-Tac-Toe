@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
+import Cell from './Cell'
+import cellsContext from "./cellsContext"
 
-function Game({children}) {
+function Game({children,game_id}) {
   useEffect(()=>{
-
+    //
   },[])
-
+  const {state,dispatch,ACTIONS} = useContext(cellsContext);
 
   return (
     <>
-        {children}
+      {
+        state.games[game_id].cells.map((cell,i)=>{
+          return <Cell key={i} game_id={game_id} id_={i}/>
+        })
+      }
     </>
   )
 }

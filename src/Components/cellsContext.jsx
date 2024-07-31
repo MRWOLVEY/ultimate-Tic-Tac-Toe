@@ -6,6 +6,7 @@ export const resetState=()=>{
         const game = { 
             cells: [],
             'won': undefined,
+            position_url:"",
          };
         for (let j = 0; j < 9; j++) {
         game.cells.push({

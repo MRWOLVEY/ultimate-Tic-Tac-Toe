@@ -7,25 +7,22 @@ import cellsContext from "./cellsContext"
 function Cell({url,handler,activeprop,id_,game_id}) {
   const [active, setActive] = useState(false)
   useEffect(() => {
-    activeprop?setActive(true):setActive(false);
-    // console.log(state)
-  },[])
-
-  useEffect(() => {
-    
-  },[])
-
-  const {state,dispatch,ACTIONS} = useContext(cellsContext)
-
-  const lol = (e) =>{
     //
-  }
+  },[])
 
+  const {state,turn,changeTurn,dispatch,ACTIONS} = useContext(cellsContext)
+
+  const handleClick = (e) =>{
+    if (state.games[game_id].cells[id_].active) {
+      dispatch({type:ACTIONS.changeCell, payload:{active:false, value:turn.current,game_id:game_id,id_:id_}})
+      changeTurn()
+    }
+  }
 
   return (
     <>
-      <div className="bg-slate-50 w-32 h-32 p-4 transition hover:scale-110 active:scale-90 rounded" onClick={lol}>
-        <img src={url?url:ph} className={classNames('',{"opacity-0":active})} />
+      <div className="bg-slate-50 w-32 h-32 p-4 transition hover:scale-110 active:scale-90 rounded" onClick={handleClick}>
+        <img src={state.games[game_id].cells[id_].url} className={classNames('',{"opacity-0":active})} />
       </div>
     </>
   )

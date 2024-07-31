@@ -35,12 +35,7 @@ const App = () => {
     return (
         <cellsContext.Provider value={{turn,changeTurn,state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-40 bg-gray flex">
-                <Game className="">
-                    <Cell url={xIcon} handler={handleAtomClick} activeprop={false} game_id="0" id_="0"/>
-                    <Cell url={oIcon} handler={handleAtomClick} activeprop={false} game_id="0" id_="1"/>
-                    <Cell handler={handleAtomClick} activeprop={true} game_id="0" id_="2"/>
-                </Game>
-
+                <Game className="" game_id={0}/>
             </div>
         </cellsContext.Provider>
     )
