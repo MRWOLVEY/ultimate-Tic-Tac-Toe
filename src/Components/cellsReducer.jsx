@@ -7,7 +7,7 @@ export default function reducer (state,action){
     switch(action.type){
         case 'resetStateAndTurn':
             return {
-                games:resetState(),
+                boxes:resetState(),
                 turn:'x',
             }
         case 'resetTurn':
@@ -23,11 +23,11 @@ export default function reducer (state,action){
         case 'changeCell':
             return{
                 ...state,
-                games:state.games.map((game,i)=>{
-                    if(i==action.payload.game_id){
+                boxes:state.boxes.map((box,i)=>{
+                    if(i==action.payload.box_id){
                         return{
-                            ...game,
-                            cells:game.cells.map((cell,j)=>{
+                            ...box,
+                            cells:box.cells.map((cell,j)=>{
                                 if(j==action.payload.id_){
                                     return{
                                         ...cell,
@@ -40,7 +40,7 @@ export default function reducer (state,action){
                             })
                         }
                     }
-                    return game
+                    return box
                 })
             }
         default: return state

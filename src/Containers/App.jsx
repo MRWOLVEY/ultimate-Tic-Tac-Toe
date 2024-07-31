@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState,useReducer } from "react"
 // import TTTgrid from "../Components/TTTgrid.jsx"
 import './App.css'
-import Game from "../Components/Game.jsx"
+import Box from "../Components/Box.jsx"
 import Cell from "../Components/Cell.jsx"
 import cellsContext from "../Components/cellsContext.jsx"
 import reducer from "../Components/cellsReducer.jsx"
@@ -35,7 +35,7 @@ const App = () => {
     return (
         <cellsContext.Provider value={{turn,changeTurn,state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-40 bg-gray flex">
-                <Game className="" game_id={0}/>
+                <Box className="" box_id={0}/>
             </div>
         </cellsContext.Provider>
     )

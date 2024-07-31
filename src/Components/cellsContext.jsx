@@ -1,29 +1,29 @@
 import React, { useRef } from 'react'
 
 export const resetState=()=>{
-    const games = [];
+    const boxes = [];
     for (let i = 0; i < 9; i++) {
-        const game = { 
+        const box = { 
             cells: [],
             'won': undefined,
             position_url:"",
          };
         for (let j = 0; j < 9; j++) {
-        game.cells.push({
+        box.cells.push({
             'url':"",
             'value':"",
             'active':true,
 
         });
         }
-        games.push(game);
+        boxes.push(box);
     }
     
-    return games;
+    return boxes;
 }
 
 const cellsContext= React.createContext({
-    games: resetState(),
+    boxes: resetState(),
     turn:'x',
 })
 
