@@ -9,13 +9,13 @@ function Box({children,box_id}) {
   const {state,dispatch,ACTIONS} = useContext(cellsContext);
 
   return (
-    <>
+    <div className='grid grid-cols-[8rem_8rem_8rem] gap-4 bg-zinc-700 w-fit'>
       {
         state.boxes[box_id].cells.map((cell,i)=>{
           return <Cell key={i} box_id={box_id} id_={i}/>
         })
       }
-    </>
+    </div>
   )
 }
 
