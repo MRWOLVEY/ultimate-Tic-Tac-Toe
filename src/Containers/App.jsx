@@ -31,38 +31,10 @@ const App = () => {
         console.log(e.target);
         console.log(msg);
     }
-    const checkBoxWin = (box_id) =>{
-        const box=state.boxes[box_id]
-        if (box.cells[0].value===box.cells[1].value && box.cells[0].value===box.cells[2].value){
-
-        }
-        if (box.cells[3].value===box.cells[4].value && box.cells[3].value===box.cells[5].value){
-
-        }
-        if (box.cells[6].value===box.cells[7].value && box.cells[6].value===box.cells[8].value){
-
-        }
-        if (box.cells[0].value===box.cells[3].value && box.cells[0].value===box.cells[6].value){
-
-        }
-        if (box.cells[1].value===box.cells[4].value && box.cells[1].value===box.cells[7].value){
-
-        }
-        if (box.cells[2].value===box.cells[5].value && box.cells[2].value===box.cells[8].value){
-
-        }
-        if (box.cells[0].value===box.cells[4].value && box.cells[0].value===box.cells[8].value){
-
-        }
-        if (box.cells[2].value===box.cells[4].value && box.cells[2].value===box.cells[6].value){
-            
-        }
-        
-    }
 
     return (
         <cellsContext.Provider value={{turn,changeTurn,state,dispatch,ACTIONS}}>
-            <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-start">
+            <div className="App h-lvh lg:px-40 bg-gray flex">
                 <Box className="" box_id={0}/>
             </div>
         </cellsContext.Provider>
