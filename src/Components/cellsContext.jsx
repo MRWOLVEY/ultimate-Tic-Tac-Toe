@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React,{ useContext } from "react";
 
 export const resetState=()=>{
     const boxes = [];
@@ -6,7 +6,6 @@ export const resetState=()=>{
         const box = { 
             cells: [],
             'won': undefined,
-            position_url:"",
          };
         for (let j = 0; j < 9; j++) {
         box.cells.push({
