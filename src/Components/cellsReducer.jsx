@@ -2,18 +2,48 @@ import { resetState } from "./cellsContext"
 import xIcon from "../Assets/X.png"
 import oIcon from "../Assets/O.png"
 
+
+const checkBoxWin = (state,box_id) =>{
+    const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6]             // Diagonals
+      ];
+      
+    for (let pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (
+          state.boxes[box_id].cells[a].value == state.boxes[box_id].cells[b].value&& 
+          state.boxes[box_id].cells[a].value == state.boxes[box_id].cells[c].value&&
+          state.boxes[box_id].cells[a].value !== "")
+        {
+        // win actions
+        return true
+        }
+      }
+    return false
+}
+
+const checkLastCell = (state) =>{
+    // return state.box_id[state.lastCell].won? undefined:state.lastCell
+    if (state.boxes[state.lastCell].won == undefined){
+        return state.lastCell
+    }
+    else{
+        // a message should appear on the left side to tell the user to choose a box
+        // return box id
+        // return state.lastCell for now
+        return state.lastCell
+    }
+}
+
 export default function reducer (state,action){
 
     switch(action.type){
         case 'resetStateAndTurn':
             return {
-                games:resetState(),
+                boxes:resetState(),
                 turn:'x',
-            }
-        case 'resetTurn':
-            return{
-                ...state,
-                turn:'x'
             }
         case 'changeTurn':
             return{
@@ -23,16 +53,17 @@ export default function reducer (state,action){
         case 'changeCell':
             return{
                 ...state,
-                games:state.games.map((game,i)=>{
-                    if(i==action.payload.game_id){
+                lastCell:action.payload.id_,
+                boxes:state.boxes.map((box,i)=>{
+                    if(i==action.payload.box_id){
                         return{
-                            ...game,
-                            cells:game.cells.map((cell,j)=>{
+                            ...box,
+                            cells:box.cells.map((cell,j)=>{
                                 if(j==action.payload.id_){
                                     return{
                                         ...cell,
                                         active:false,
-                                        url:action.payload.value=='X'? xIcon:oIcon,
+                                        url:action.payload.value=='x'? xIcon:oIcon,
                                         value:action.payload.value,
                                     }
                                 }
@@ -40,8 +71,31 @@ export default function reducer (state,action){
                             })
                         }
                     }
-                    return game
+                    return box
                 })
+            }
+        case 'checkWin':
+            const win=checkBoxWin(state,action.payload.box_id)
+            if (win){
+                return{
+                    ...state,
+                    boxes:state.boxes.map((box,i)=>{
+                        if(i==action.payload.box_id){
+                            return{
+                                ...box,
+                                won:state.turn,
+                                url:state.turn=='x'? xIcon:oIcon
+                            }
+                        }
+                        return box
+                    })
+                }
+            }
+        case 'determineNextBox':
+            const nextBox=checkLastCell(state)
+            return{
+                ...state,
+                currentBox:nextBox,
             }
         default: return state
     }
