@@ -3,6 +3,7 @@ import './App.css'
 import Box from "../Components/Box.jsx"
 import cellsContext from "../Components/cellsContext.jsx"
 import reducer from "../Components/cellsReducer.jsx"
+import Board from "../Components/Board.jsx"
 
 const ACTIONS={
     resetStateAndTurn:'resetStateAndTurn',
@@ -31,8 +32,9 @@ const App = () => {
 
     return (
         <cellsContext.Provider value={{state,dispatch,ACTIONS}}>
-            <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-center">
-                <Box className="" box_id={state.currentBox}/>
+            <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-around">
+                <Box className="w-" box_id={state.currentBox} CZ={8} />
+                {/* <Board/> */}
             </div>
         </cellsContext.Provider>
     )
