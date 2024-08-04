@@ -9,6 +9,7 @@ const ACTIONS={
     changeTurn:'changeTurn',
     changeCell:'changeCell',
     checkWin:'checkWin',
+    determineNextBox:'determineNextBox',
 }
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
     return (
         <cellsContext.Provider value={{state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-center">
-                <Box className="" box_id={0}/>
+                <Box className="" box_id={state.currentBox}/>
             </div>
         </cellsContext.Provider>
     )

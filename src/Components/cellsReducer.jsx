@@ -17,11 +17,24 @@ const checkBoxWin = (state,box_id) =>{
           state.boxes[box_id].cells[a].value == state.boxes[box_id].cells[c].value&&
           state.boxes[box_id].cells[a].value !== "")
         {
-        //   dispatch({type:ACTIONS.setWin, payload:{box_id:box_id}})
+        // win actions
         return true
         }
       }
     return false
+}
+
+const checkLastCell = (state) =>{
+    // return state.box_id[state.lastCell].won? undefined:state.lastCell
+    if (state.boxes[state.lastCell].won == undefined){
+        return state.lastCell
+    }
+    else{
+        // a message should appear on the left side to tell the user to choose a box
+        // return box id
+        // return state.lastCell for now
+        return state.lastCell
+    }
 }
 
 export default function reducer (state,action){
@@ -40,6 +53,7 @@ export default function reducer (state,action){
         case 'changeCell':
             return{
                 ...state,
+                lastCell:action.payload.id_,
                 boxes:state.boxes.map((box,i)=>{
                     if(i==action.payload.box_id){
                         return{
@@ -70,11 +84,18 @@ export default function reducer (state,action){
                             return{
                                 ...box,
                                 won:state.turn,
+                                url:state.turn=='x'? xIcon:oIcon
                             }
                         }
                         return box
                     })
                 }
+            }
+        case 'determineNextBox':
+            const nextBox=checkLastCell(state)
+            return{
+                ...state,
+                currentBox:nextBox,
             }
         default: return state
     }

@@ -6,6 +6,7 @@ export const resetState=()=>{
         const box = { 
             cells: [],
             'won': undefined,
+            'url':'',
          };
         for (let j = 0; j < 9; j++) {
         box.cells.push({
@@ -24,6 +25,9 @@ export const resetState=()=>{
 const cellsContext= React.createContext({
     boxes: resetState(),
     turn:'x',
+    nextBox:undefined,//this will be used to determine in which box the next play will play
+    currentBox:0,
+    lastCell:undefined,
 })
 
 export default cellsContext
