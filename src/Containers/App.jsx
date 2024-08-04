@@ -18,11 +18,15 @@ const App = () => {
         //
     },[])
     //
+    const sizes={
+
+    }
+
     const initalState = useContext(cellsContext);
     const [state, dispatch] = useReducer(reducer, initalState);
 
     const resetGame= () => {
-        const turn = useRef('x')
+        const turn = 'x'
         dispatch({type:ACTIONS.resetStateAndTurn, payload:{turn:turn}})
     }
 
@@ -33,7 +37,7 @@ const App = () => {
     return (
         <cellsContext.Provider value={{state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-around">
-                <Box className="w-" box_id={state.currentBox} CZ={8} />
+                <Box className="w-" box_id={0} sizes={sizes} />
                 {/* <Board/> */}
             </div>
         </cellsContext.Provider>
