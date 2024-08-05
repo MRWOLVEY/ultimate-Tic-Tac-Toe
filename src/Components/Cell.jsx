@@ -3,8 +3,14 @@ import { useContext, useEffect, useState } from "react"
 import classNames from "classnames"
 import cellsContext from "./cellsContext"
 
-function Cell({id_,box_id,CZ}) {
+function Cell({id_,box_id,sizes}) {
   const {state,turn,changeTurn,dispatch,ACTIONS} = useContext(cellsContext)
+
+  const cellStyle={
+    width:sizes.factor*2+'rem',
+    height:sizes.factor*2+'rem',
+    padding:sizes.factor*0.25+'rem'
+  }
   
   useEffect(() => {
     console.log(state.lastCell)
@@ -22,8 +28,8 @@ function Cell({id_,box_id,CZ}) {
 
   return (
     <>
-      <div className= {` bg-slate-50 w-${CZ} h-${CZ} p-1 transition hover:scale-110 active:scale-90 rounded `} onClick={handleClick}>
-        <img src={state.boxes[box_id].cells[id_].url} className={classNames('w-6',{"opacity-0":state.boxes[box_id].cells[id_].active})} />
+      <div className= {` bg-slate-50 w-${8*sizes.factor} h-${8*sizes.factor} transition hover:scale-110 active:scale-90 rounded `} style={cellStyle} onClick={handleClick}>
+        <img src={state.boxes[box_id].cells[id_].url} className={classNames('',{"opacity-0":state.boxes[box_id].cells[id_].active})} />
       </div>
     </>
   )

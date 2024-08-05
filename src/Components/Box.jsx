@@ -3,27 +3,39 @@ import Cell from './Cell'
 import cellsContext from "./cellsContext"
 import classNames from 'classnames'
 
-function Box({children,box_id,CZ}) {
+function Box({children,box_id,sizes}) {
   const {state,dispatch,ACTIONS} = useContext(cellsContext);
+  const overlayStyle={
+    width:sizes.overlay,
+    height:sizes.overlay,
+    padding:sizes.factor*0.25+'rem'
+  }
+  const boxStyle={
+    gridTemplateRows:sizes.rows,
+    padding:sizes.factor*0.25+'rem'
+  }
 
   useEffect(()=>{
-    //
-  },[])
+  },)
 
-  return (
-    <>
-    <div className={classNames('wining_grid bg-slate-50 p-4 rounded absolute z-20 w-[440px] h-[440px]',{"hidden":state.boxes[box_id].won == undefined})}>
-      <img src={state.boxes[box_id].url}/>
+    if (state.boxes[box_id].won == undefined){
+      return (
+      <div className={`grid grid-cols-3 gap-${sizes.gap} bg-slate-800 h-fit rounded`} style={boxStyle}>
+      {
+        state.boxes[box_id].cells.map((cell,i)=>{
+          return <Cell key={i} box_id={box_id} id_={i} sizes={sizes}/>
+        })
+      }
     </div>
-    <div className='grid grid-rows-[2rem_2rem_2rem] grid-cols-3 gap-1 bg-slate-800 p-1 h-fit rounded relative z-10'>
-        {
-          state.boxes[box_id].cells.map((cell,i)=>{
-            return <Cell key={i} box_id={box_id} id_={i} CZ={CZ}/>
-          })
-        }
+      )
+    }
+    else{
+      return (
+    <div className={`wining_grid bg-slate-50 rounded`} style={overlayStyle} >
+      <img src={state.boxes[box_id].url} className=""/>
     </div>
-    </>
-  )
+      )
+    }
 }
 
 export default Box
