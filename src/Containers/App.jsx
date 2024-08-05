@@ -19,11 +19,12 @@ const App = () => {
     },[])
     //
     const sizes={
-        rows:'8rem_8rem_8rem',
-        gap:4,
-        factor:4,
-        overlay:'28',
+        rows:'2rem_2rem_2rem',
+        gap:1,
+        factor:1,
+        overlay:'44',
         imgW:6,
+
     }
 
     const initalState = useContext(cellsContext);
