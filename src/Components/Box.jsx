@@ -8,11 +8,13 @@ function Box({children,box_id,sizes}) {
   const overlayStyle={
     width:sizes.overlay,
     height:sizes.overlay,
-    padding:sizes.factor*0.25+'rem'
+    padding:sizes.factor*0.25+'rem',
   }
+
   const boxStyle={
     gridTemplateRows:sizes.rows,
-    padding:sizes.factor*0.25+'rem'
+    padding:sizes.factor*0.25+'rem',
+    gap:sizes.factor*0.25+'rem',
   }
 
   useEffect(()=>{
@@ -20,7 +22,7 @@ function Box({children,box_id,sizes}) {
 
     if (state.boxes[box_id].won == undefined){
       return (
-      <div className={`grid grid-cols-3 gap-${sizes.gap} bg-slate-800 h-fit rounded`} style={boxStyle}>
+      <div className={`grid grid-cols-3 bg-slate-800 h-fit rounded`} style={boxStyle}>
       {
         state.boxes[box_id].cells.map((cell,i)=>{
           return <Cell key={i} box_id={box_id} id_={i} sizes={sizes}/>
