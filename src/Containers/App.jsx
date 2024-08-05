@@ -19,12 +19,10 @@ const App = () => {
     },[])
     //
     const sizes={
-        rows:'2rem_2rem_2rem',
-        gap:1,
-        factor:1,
-        overlay:7,
-        imgW:6,
-
+        rows:'8rem 8rem 8rem',
+        gap:4,
+        factor:4,
+        overlay:'28rem',
     }
 
     const initalState = useContext(cellsContext);
@@ -42,8 +40,8 @@ const App = () => {
     return (
         <cellsContext.Provider value={{state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-40 bg-gray flex items-center justify-around">
-                <Box className="w-" box_id={0} sizes={sizes} />
-                {/* <Board/> */}
+                <Box className="" box_id={0} sizes={sizes} />
+                <Board/>
             </div>
         </cellsContext.Provider>
     )

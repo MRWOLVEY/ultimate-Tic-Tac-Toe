@@ -6,8 +6,13 @@ import classNames from 'classnames'
 function Box({children,box_id,sizes}) {
   const {state,dispatch,ACTIONS} = useContext(cellsContext);
   const overlayStyle={
-    width:sizes.overlay+'rem',
-    height:sizes.overlay+'rem'
+    width:sizes.overlay,
+    height:sizes.overlay,
+    padding:sizes.factor*0.25+'rem'
+  }
+  const boxStyle={
+    gridTemplateRows:sizes.rows,
+    padding:sizes.factor*0.25+'rem'
   }
 
   useEffect(()=>{
@@ -15,7 +20,7 @@ function Box({children,box_id,sizes}) {
 
     if (state.boxes[box_id].won == undefined){
       return (
-      <div className={`grid grid-rows-[${sizes.rows}] grid-cols-3 gap-${sizes.gap} bg-slate-800 p-${sizes.factor} h-fit rounded relative z-10`}>
+      <div className={`grid grid-cols-3 gap-${sizes.gap} bg-slate-800 h-fit rounded`} style={boxStyle}>
       {
         state.boxes[box_id].cells.map((cell,i)=>{
           return <Cell key={i} box_id={box_id} id_={i} sizes={sizes}/>
@@ -26,7 +31,7 @@ function Box({children,box_id,sizes}) {
     }
     else{
       return (
-    <div className={`wining_grid bg-slate-50 p-${sizes.factor} rounded absolute z-20`} style={overlayStyle} >
+    <div className={`wining_grid bg-slate-50 rounded`} style={overlayStyle} >
       <img src={state.boxes[box_id].url} className=""/>
     </div>
       )
