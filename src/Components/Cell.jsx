@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import classNames from "classnames"
 import cellsContext from "./cellsContext"
 
-function Cell({id_,box_id}) {
+function Cell({id_,box_id,sizes}) {
   const {state,turn,changeTurn,dispatch,ACTIONS} = useContext(cellsContext)
   
   useEffect(() => {
@@ -22,7 +22,7 @@ function Cell({id_,box_id}) {
 
   return (
     <>
-      <div className= {` bg-slate-50 w-8 h-8 p-1 transition hover:scale-110 active:scale-90 rounded `} onClick={handleClick}>
+      <div className= {` bg-slate-50 w-overlay h-8 p-1 transition hover:scale-110 active:scale-90 rounded `} onClick={handleClick}>
         <img src={state.boxes[box_id].cells[id_].url} className={classNames('w-6',{"opacity-0":state.boxes[box_id].cells[id_].active})} />
       </div>
     </>
