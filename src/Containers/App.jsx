@@ -22,7 +22,7 @@ const App = () => {
         rows:'2rem_2rem_2rem',
         gap:1,
         factor:1,
-        overlay:'44',
+        overlay:7,
         imgW:6,
 
     }
