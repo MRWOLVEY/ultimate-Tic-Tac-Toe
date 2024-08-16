@@ -1,4 +1,4 @@
-import { resetState } from "./cellsContext"
+import { resetBoxes } from "./cellsContext"
 import xIcon from "../Assets/X.png"
 import oIcon from "../Assets/O.png"
 
@@ -42,8 +42,12 @@ export default function reducer (state,action){
     switch(action.type){
         case 'resetStateAndTurn':
             return {
-                boxes:resetState(),
+                boxes: resetBoxes(),
                 turn:'x',
+                currentBox:0,
+                lastCell:undefined,
+                scores:[0,0],
+                gameStatus:'newGame',//newGame,select,turn,won
             }
         case 'changeTurn':
             return{
