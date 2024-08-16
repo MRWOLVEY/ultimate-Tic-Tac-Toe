@@ -11,6 +11,7 @@ const ACTIONS={
     changeCell:'changeCell',
     checkWin:'checkWin',
     determineNextBox:'determineNextBox',
+    setNextBox:'setNextBox',
 }
 
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
     return (
         <cellsContext.Provider value={{state,dispatch,ACTIONS}}>
             <div className="App h-lvh lg:px-32 xl:px-60 bg-gray flex flex-col lg:flex-row items-center justify-between">
-                <Box className="" box_id={0} sizes={sizes} />
+                <Box className="" box_id={0} sizes={sizes} boardItem={false} />
                 <Board/>
             </div>
         </cellsContext.Provider>
