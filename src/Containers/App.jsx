@@ -11,6 +11,7 @@ const ACTIONS={
     changeCell:'changeCell',
     checkWin:'checkWin',
     determineNextBox:'determineNextBox',
+    setNextBox:'setNextBox',
 }
 
 const App = () => {
@@ -68,7 +69,7 @@ const App = () => {
                 {state.gameStatus=='select'&&<div className="message flex flex-col justify-center h-100">
                     <h1 className="text-2xl font-bold">please select a box that is highlighted in white</h1>
                 </div>}
-                {state.gameStatus=='turn'&&<Box className="" box_id={state.currentBox} sizes={sizes} />}
+                {state.gameStatus=='turn'&&<Box className="" box_id={state.currentBox} sizes={sizes} boardItem={false} />}
                 <Board/>
             </div>
         </cellsContext.Provider>
