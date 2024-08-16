@@ -2,6 +2,7 @@ import React, { useEffect, useState,useContext } from 'react'
 import Cell from './Cell'
 import cellsContext from "./cellsContext"
 import classNames from 'classnames'
+import "./box.css"
 
 function Box({children,box_id,sizes,boardItem}) {
   const {state,dispatch,ACTIONS} = useContext(cellsContext);
@@ -31,14 +32,17 @@ function Box({children,box_id,sizes,boardItem}) {
             }
             {boardItem&&<div className="absolute inset-0 bg-transparent pointer-events-auto rounded" onClick={()=>dispatch({type:ACTIONS.setNextBox, payload:{box_id:box_id}})}></div>}
           </div> 
+
         </>
       )
     }
     else{
       return (
-    <div className={`wining_grid bg-slate-50 rounded`} style={overlayStyle} >
-      <img src={state.boxes[box_id].url} className=""/>
-    </div>
+        <>
+          <div className={classNames(' bg-slate-50 rounded',{'wining_grid':state.selectBox})} style={overlayStyle} >
+            <img src={state.boxes[box_id].url} className=""/>
+          </div>
+        </>
       )
     }
 }

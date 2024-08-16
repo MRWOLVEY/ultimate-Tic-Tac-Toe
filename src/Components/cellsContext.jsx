@@ -28,6 +28,8 @@ const cellsContext= React.createContext({
     nextBox:undefined,//this will be used to determine in which box the next play will play
     currentBox:0,
     lastCell:undefined,
+    selectBox:true,
+    
 })
 
 export default cellsContext
