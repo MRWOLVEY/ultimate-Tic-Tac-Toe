@@ -97,6 +97,12 @@ export default function reducer (state,action){
                 ...state,
                 currentBox:nextBox,
             }
+        case 'setNextBox':
+            return{
+                ...state,
+                currentBox:action.payload.box_id,
+                gameStatus:state.gameStatus=='newGame'? 'turn':state.gameStatus 
+            }
         default: return state
     }
 }
