@@ -12,6 +12,7 @@ const ACTIONS={
     checkWin:'checkWin',
     determineNextBox:'determineNextBox',
     setNextBox:'setNextBox',
+    checkGameWin:'checkGameWin',
 }
 
 const App = () => {
@@ -46,6 +47,10 @@ const App = () => {
                 </div>}
                 {state.gameStatus=='select'&&<div className="message flex flex-col justify-center max-w-80 h-100">
                     <h1 className="text-2xl font-bold">please select a box that is highlighted in white</h1>
+                </div>}
+                {state.gameStatus=='won'&&<div className="message flex flex-col justify-center max-w-80 h-100">
+                    <h1 className="text-2xl font-bold">{state.winner}won the game</h1>
+                    <h1 className="">score:{state.scores}</h1>
                 </div>}
                 {state.gameStatus=='turn'&&<Box className="" box_id={state.currentBox} sizes={sizes} boardItem={false} />}
                 <Board/>
