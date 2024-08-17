@@ -1,6 +1,6 @@
 import React,{ useContext } from "react";
 
-export const resetState=()=>{
+export const resetBoxes=()=>{
     const boxes = [];
     for (let i = 0; i < 9; i++) {
         const box = { 
@@ -23,11 +23,13 @@ export const resetState=()=>{
 }
 
 const cellsContext= React.createContext({
-    boxes: resetState(),
+    boxes: resetBoxes(),
     turn:'x',
-    nextBox:undefined,//this will be used to determine in which box the next play will play
-    currentBox:0,
+    currentBox:undefined,
     lastCell:undefined,
+    scores:[0,0],//[x,y]
+    gameStatus:'newGame',//newGame,select,turn,won
+    winner:undefined,
 })
 
 export default cellsContext
