@@ -27,13 +27,15 @@ const checkBoxWin = (state,box_id) =>{
 const checkLastCell = (state) =>{
     // return state.box_id[state.lastCell].won? undefined:state.lastCell
     if (state.boxes[state.lastCell].won == undefined){
+        console.log('case1')
         return state.lastCell
     }
     else{
         // a message should appear on the left side to tell the user to choose a box
         // return box id
         // return state.lastCell for now
-        return state.lastCell
+        console.log('case2')
+        return 'select'
     }
 }
 
@@ -97,6 +99,12 @@ export default function reducer (state,action){
             }
         case 'determineNextBox':
             const nextBox=checkLastCell(state)
+            if (nextBox=='select'){
+                return{
+                    ...state,
+                    gameStatus:'select'
+                }
+            }
             return{
                 ...state,
                 currentBox:nextBox,
@@ -105,7 +113,7 @@ export default function reducer (state,action){
             return{
                 ...state,
                 currentBox:action.payload.box_id,
-                gameStatus:state.gameStatus=='newGame'? 'turn':state.gameStatus 
+                gameStatus:state.gameStatus=='newGame'||state.gameStatus=='select'? 'turn':state.gameStatus 
             }
         default: return state
     }

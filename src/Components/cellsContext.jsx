@@ -25,7 +25,7 @@ export const resetBoxes=()=>{
 const cellsContext= React.createContext({
     boxes: resetBoxes(),
     turn:'x',
-    currentBox:0,
+    currentBox:undefined,
     lastCell:undefined,
     scores:[0,0],
     gameStatus:'newGame',//newGame,select,turn,won
