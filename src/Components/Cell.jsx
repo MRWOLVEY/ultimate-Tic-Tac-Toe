@@ -21,6 +21,7 @@ function Cell({id_,box_id,sizes}) {
     if (state.boxes[box_id].cells[id_].active&& state.boxes[box_id].won == undefined) {
       dispatch({type:ACTIONS.changeCell, payload:{active:false, value:state.turn,box_id:box_id,id_:id_}})
       dispatch({type:ACTIONS.checkWin, payload:{box_id:box_id}})
+      dispatch({type:ACTIONS.checkGameWin})
       dispatch({type:ACTIONS.changeTurn})
       dispatch({type:ACTIONS.determineNextBox})
     }
