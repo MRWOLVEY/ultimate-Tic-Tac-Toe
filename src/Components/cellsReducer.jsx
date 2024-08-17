@@ -62,14 +62,14 @@ const checkLastCell = (state) =>{
 export default function reducer (state,action){
 
     switch(action.type){
-        case 'resetStateAndTurn':
+        case 'reset':
             return {
                 boxes: resetBoxes(),
                 turn:'x',
                 currentBox:0,
                 lastCell:undefined,
-                scores:[0,0],
                 gameStatus:'newGame',//newGame,select,turn,won
+                winner:undefined
             }
         case 'changeTurn':
             return{
@@ -119,7 +119,7 @@ export default function reducer (state,action){
             }
         case 'determineNextBox':
             const nextBox=checkLastCell(state)
-            if (nextBox=='select'){
+            if (nextBox=='select'&&state.gameStatus!='won'){
                 return{
                     ...state,
                     gameStatus:'select'

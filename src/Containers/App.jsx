@@ -6,7 +6,7 @@ import reducer from "../Components/cellsReducer.jsx"
 import Board from "../Components/Board.jsx"
 
 const ACTIONS={
-    resetStateAndTurn:'resetStateAndTurn',
+    reset:'reset',
     changeTurn:'changeTurn',
     changeCell:'changeCell',
     checkWin:'checkWin',
@@ -32,11 +32,7 @@ const App = () => {
 
     const resetGame= () => {
         const turn = 'x'
-        dispatch({type:ACTIONS.resetStateAndTurn, payload:{turn:turn}})
-    }
-
-    const changeTurn = () => {
-        turn.current = (turn.current === 'x') ? 'o' : 'x';
+        dispatch({type:ACTIONS.reset, payload:{turn:turn}})
     }
 
     return (
@@ -44,14 +40,19 @@ const App = () => {
             <div className="App h-lvh lg:px-32 xl:px-60 bg-gray flex flex-col lg:flex-row items-center justify-between">
                 {state.gameStatus=='newGame'&&<div className="message flex flex-col justify-center max-w-80 h-100">
                     <h1 className="text-2xl font-bold">please select a box to start the game</h1>
+                    <h1 className="">score:{state.scores}</h1>
                 </div>}
-                {state.gameStatus=='select'&&<div className="message flex flex-col justify-center max-w-80 h-100">
-                    <h1 className="text-2xl font-bold">please select a box that is highlighted in white</h1>
-                </div>}
+
                 {state.gameStatus=='won'&&<div className="message flex flex-col justify-center max-w-80 h-100">
                     <h1 className="text-2xl font-bold">{state.winner}won the game</h1>
                     <h1 className="">score:{state.scores}</h1>
+                    <button className="btn btn-primary" onClick={resetGame}>Play Again</button>
                 </div>}
+
+                {state.gameStatus=='select'&&<div className="message flex flex-col justify-center max-w-80 h-100">
+                    <h1 className="text-2xl font-bold">please select a box that is highlighted in white</h1>
+                </div>}
+                
                 {state.gameStatus=='turn'&&<Box className="" box_id={state.currentBox} sizes={sizes} boardItem={false} />}
                 <Board/>
             </div>
