@@ -28,7 +28,7 @@ const cellsContext= React.createContext({
     currentBox:undefined,
     lastCell:undefined,
     scores:[0,0],//[x,y]
-    gameStatus:'won',//newGame,select,turn,won
+    gameStatus:'newGame',//newGame,select,turn,won
     winner:'x',
 })
 

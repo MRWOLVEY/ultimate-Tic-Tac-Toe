@@ -23,7 +23,8 @@ function Box({children,box_id,sizes,boardItem}) {
 
     if (state.boxes[box_id].won == undefined){
       return (
-        <>
+        <div>
+        {state.gameStatus=='turn'&&!boardItem&&<h1 className='text-center text-3xl mb-3'>player {state.turn} turn</h1>}
           <div className={classNames('grid grid-cols-3 bg-slate-800 h-fit rounded relative transition ',{'hover:scale-105 active:scale-95 active_box':boardItem&&state.boxes[box_id].won == undefined&&state.gameStatus=='newGame'||boardItem&&state.boxes[box_id].won == undefined&&state.gameStatus=='select','current_box':boardItem&&state.currentBox==box_id&&state.gameStatus=='turn'})} style={boxStyle}>
             {
               state.boxes[box_id].cells.map((cell,i)=>{
@@ -33,7 +34,7 @@ function Box({children,box_id,sizes,boardItem}) {
             {boardItem&&<div className="absolute inset-0 bg-transparent pointer-events-auto rounded" onClick={()=>state.gameStatus=='newGame'||state.gameStatus=='select'?dispatch({type:ACTIONS.setNextBox, payload:{box_id:box_id}}):null}></div>}
           </div> 
 
-        </>
+        </div>
       )
     }
     else{
