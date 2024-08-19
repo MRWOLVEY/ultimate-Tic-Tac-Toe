@@ -2,7 +2,7 @@ import React, { useEffect, useState,useContext } from 'react'
 import Cell from './Cell'
 import cellsContext from "./cellsContext"
 import classNames from 'classnames'
-import "./box.css"
+import "../Containers/App.css"
 
 function Box({children,box_id,sizes,boardItem}) {
   const {state,dispatch,ACTIONS} = useContext(cellsContext);

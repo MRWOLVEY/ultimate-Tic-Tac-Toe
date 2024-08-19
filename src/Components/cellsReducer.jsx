@@ -64,6 +64,7 @@ export default function reducer (state,action){
     switch(action.type){
         case 'reset':
             return {
+                ...state,
                 boxes: resetBoxes(),
                 turn:'x',
                 currentBox:0,
