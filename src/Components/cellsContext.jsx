@@ -29,7 +29,7 @@ const cellsContext= React.createContext({
     lastCell:undefined,
     scores:[0,0],//[x,y]
     gameStatus:'newGame',//newGame,select,turn,won
-    winner:'x',
+    winner:undefined,
 })
 
 export default cellsContext

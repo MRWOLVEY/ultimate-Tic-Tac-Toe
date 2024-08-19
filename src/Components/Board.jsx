@@ -14,7 +14,7 @@ function Board() {
 
   return (
     <div>
-      <div className='grid grid-rows-[7rem_7rem_7rem] grid-cols-3 gap-1 bg-green-500 p-3 h-fit rounded relative z-10'>
+      <div className='grid grid-rows-[7rem_7rem_7rem] grid-cols-3 gap-1 bg-orange-300 p-3 h-fit rounded relative z-10'>
           {
               state.boxes.map((box,i)=>{
                   return <Box className="" box_id={i} key={i} sizes={sizes} boardItem={true} />
