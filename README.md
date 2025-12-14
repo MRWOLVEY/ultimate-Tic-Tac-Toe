@@ -2,7 +2,7 @@
 [live demo](https://zesty-conkies-9253e2.netlify.app/)
 -
 ## Description:-
-An enhanced version of Tic Tac Toe with a 81x81 board layout, implementing rules and features that make the game more complex and strategic.
+An enhanced version of Tic Tac Toe with a 9x9 board layout, implementing rules and features that make the game more complex and strategic.
 [how to play](https://youtu.be/zP4GFgXTY4M)
 ## Technical info:-
 - build tool: Vite
